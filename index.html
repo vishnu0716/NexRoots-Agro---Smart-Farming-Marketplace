@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>NexRoots Agro | Smart Farming Solutions</title>
+  <!-- Google Fonts + Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fefef7;
+      color: #1e2a1f;
+      scroll-behavior: smooth;
+    }
+
+    /* custom scroll */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #e4e7d9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2e7d32;
+      border-radius: 10px;
+    }
+
+    /* reusable containers */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 48px;
+      background: #0f3b12;
+      backdrop-filter: blur(0px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: all 0.2s;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      color: #f9f6e2;
+    }
+    .logo i {
+      font-size: 32px;
+      color: #c8e6b5;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 32px;
+      align-items: center;
+    }
+    .nav-links li a {
+      color: #f1f8e9;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.2s;
+      font-size: 1rem;
+      letter-spacing: 0.3px;
+    }
+    .nav-links li a:hover {
+      color: #ffecb3;
+      border-bottom: 2px solid #ffb74d;
+      padding-bottom: 4px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(105deg, #f5b042 0%, #e8891f 100%);
+      border: none;
+      padding: 10px 26px;
+      color: #1f3b1a;
+      font-weight: 700;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: 0.25s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      font-size: 0.95rem;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      background: linear-gradient(105deg, #ffbc5e, #f29c2e);
+      box-shadow: 0 10px 18px rgba(0,0,0,0.15);
+    }
+    .btn-outline-light {
+      background: transparent;
+      border: 2px solid #ffd966;
+      padding: 10px 26px;
+      border-radius: 40px;
+      font-weight: 600;
+      color: white;
+      transition: 0.2s;
+    }
+    .btn-outline-light:hover {
+      background: #ffd966;
+      color: #1e3a1a;
+      transform: scale(1.02);
+    }
+
+    /* hero section */
+    .hero {
+      position: relative;
+      background: linear-gradient(115deg, #1e4a1f 0%, #0f3a12 100%);
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: url('https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?q=80&w=2070&auto=format');
+      background-size: cover;
+      background-position: center 30%;
+      opacity: 0.2;
+      pointer-events: none;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 48px;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-content h1 {
+      font-size: 3.6rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #fff8e7;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      color: #f0f7e6;
+      margin: 24px 0 32px;
+      opacity: 0.9;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 30px;
+    }
+    .stat-item {
+      background: rgba(255,255,230,0.12);
+      backdrop-filter: blur(4px);
+      padding: 12px 20px;
+      border-radius: 40px;
+      text-align: center;
+      border: 1px solid rgba(255,215,120,0.5);
+    }
+    .stat-number {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: #ffdd99;
+    }
+    .hero-img-card {
+      background: rgba(46, 87, 42, 0.5);
+      backdrop-filter: blur(10px);
+      border-radius: 48px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 20px 35px rgba(0,0,0,0.2);
+      border: 1px solid rgba(255,220,150,0.4);
+    }
+    .hero-img-card img {
+      width: 100%;
+      border-radius: 32px;
+      max-height: 320px;
+      object-fit: cover;
+      box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+    }
+
+    /* categories section */
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #1b4d1a;
+    }
+    .section-sub {
+      text-align: center;
+      color: #4a6845;
+      margin-bottom: 48px;
+      font-size: 1.1rem;
+    }
+    .products {
+      padding: 80px 0;
+      background: #fafaf2;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+    }
+    .card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      box-shadow: 0 12px 22px rgba(0, 0, 0, 0.05);
+      cursor: pointer;
+      border: 1px solid #e7efdf;
+    }
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 28px 32px rgba(60, 80, 20, 0.15);
+      border-color: #cfe3c1;
+    }
+    .card-img {
+      height: 220px;
+      overflow: hidden;
+    }
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .card:hover .card-img img {
+      transform: scale(1.06);
+    }
+    .card-content {
+      padding: 20px 20px 24px;
+    }
+    .card h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #1b4d1a;
+    }
+    .price-tag {
+      font-weight: 800;
+      color: #e67e22;
+      margin: 12px 0 6px;
+      font-size: 1.2rem;
+    }
+    .card p {
+      color: #4c5c47;
+      line-height: 1.4;
+    }
+    .card-badge {
+      display: inline-block;
+      background: #eef4e4;
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #2b6e2a;
+      margin-bottom: 12px;
+    }
+
+    /* feature banner */
+    .feature-banner {
+      background: linear-gradient(95deg, #1f3b1a 0%, #2e6b2b 100%);
+      color: white;
+      padding: 70px 0;
+      text-align: center;
+    }
+    .feature-flex {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 48px;
+    }
+    .feature-item i {
+      font-size: 2.8rem;
+      background: #ffd96633;
+      padding: 16px;
+      border-radius: 60px;
+      margin-bottom: 16px;
+    }
+    .feature-item h4 {
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    /* testimonial / real section */
+    .testimonial {
+      background: #f5f6ed;
+      padding: 80px 0;
+    }
+    .testi-grid {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .testi-card {
+      background: white;
+      border-radius: 36px;
+      padding: 28px 32px;
+      max-width: 340px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.04);
+      border: 1px solid #dee6d3;
+    }
+    .stars {
+      color: #ffb347;
+      margin-bottom: 12px;
+    }
+    .testi-card p {
+      font-style: italic;
+      color: #2e3e2a;
+      font-weight: 500;
+    }
+    .farmer-name {
+      margin-top: 18px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* footer */
+    footer {
+      background: #0a2c0e;
+      color: #d8e0cf;
+      padding-top: 56px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      padding-bottom: 40px;
+    }
+    .footer-col h4 {
+      color: #ffdf9c;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+    .footer-col p, .footer-col a {
+      color: #cbe5c1;
+      text-decoration: none;
+      line-height: 1.8;
+      transition: 0.2s;
+    }
+    .social-icons a {
+      margin-right: 16px;
+      font-size: 1.4rem;
+      color: #ffd966;
+    }
+    .copyright {
+      text-align: center;
+      border-top: 1px solid #2a5526;
+      padding: 24px;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 900px) {
+      .navbar {
+        padding: 16px 24px;
+        flex-wrap: wrap;
+      }
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      .hero-stats {
+        justify-content: center;
+      }
+      .container {
+        padding: 0 24px;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+    button, .card {
+      cursor: pointer;
+    }
+    .btn-login {
+      background: rgba(255,215,130,0.2);
+      border: 1px solid #ffdf9c;
+      color: #ffefcf;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="navbar">
+    <div class="logo">
+      <i class="fas fa-seedling"></i> 
+      <span>NexRoots Agro</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Products</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <button class="btn-primary btn-login" style="background: transparent; border: 1px solid #ffd966;"><i class="fas fa-user-circle"></i> Farmer Login</button>
+  </nav>
+</header>
+
+<main>
+  <!-- Hero with realistic impact -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <h1>Empowering Indian Farmers with Smart Agri-Tech</h1>
+          <p>Premium seeds, bio-stimulants, and digital tools — delivered at the best prices, right to your doorstep.</p>
+          <button class="btn-primary" style="font-size: 1.05rem;"><i class="fas fa-shopping-cart"></i> Explore Marketplace</button>
+          <div class="hero-stats">
+            <div class="stat-item"><span class="stat-number">25K+</span><br>Farmers Served</div>
+            <div class="stat-item"><span class="stat-number">98%</span><br>Crop Satisfaction</div>
+            <div class="stat-item"><span class="stat-number">450+</span><br>Villages Covered</div>
+          </div>
+        </div>
+        <div class="hero-img-card">
+          <img src="https://images.unsplash.com/photo-1592982537447-6f2a6a0a7e2c?q=80&w=2071&auto=format" alt="happy farmer with harvest">
+          <p style="margin-top: 12px; font-size: 0.8rem; color:#f9f2d9;"><i class="fas fa-tractor"></i> Direct from Farm to Market</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products - categories realistic pricing -->
+  <section class="products">
+    <div class="container">
+      <h2 class="section-title">🌾 Premium Agro Categories</h2>
+      <div class="section-sub">Scientifically tested, high-yield solutions for modern farming</div>
+      <div class="product-grid">
+        <!-- Herbicide -->
+        <div class="card">
+          <div class="card-img"><img src="https://grass-killer.com/wp-content/uploads/2020/11/1-6-768x768.jpg" alt="herbicide"></div>
+          <div class="card-content">
+            <span class="card-badge"><i class="fas fa-leaf"></i> Weed Control</span>
+            <h3>Herbicides</h3>
+            <div class="price-tag">₹899 - ₹2,499/L</div>
+            <p>Systemic weed management • Zero crop residue</p>
+          </div>
+        </div>
+        <!-- Growth Promoters -->
+        <div class="card">
+          <div class="card-img"><img src="https://5.imimg.com/data5/HC/FS/TM/SELLER-1642394/regold-plant-growth-promoter.jpg" alt="growth promoter"></div>
+          <div class="card-content">
+            <span class="card-badge"><i class="fas fa-chart-line"></i> Bio-Stimulant</span>
+            <h3>Growth Promoters</h3>
+            <div class="price-tag">₹550 - ₹1,850/L</div>
+            <p>Boost root & shoot, increase yield up to 30%</p>
+          </div>
+        </div>
+        <!-- Fungicides -->
+        <div class="card">
+          <div class="card-img"><img src="https://images.homedepot-static.com/productImages/9d53c24e.jpg" alt="fungicide spray"></div>
+          <div class="card-content">
+            <span class="card-badge"><i class="fas fa-shield-alt"></i> Disease Shield</span>
+            <h3>Fungicides</h3>
+            <div class="price-tag">₹720 - ₹3,200/kg</div>
+            <p>Broad-spectrum protection, organic options</p>
+          </div>
+        </div>
+        <!-- Seeds - High quality -->
+        <div class="card">
+          <div class="card-img"><img src="https://images-cdn.ubuy.co.in/641d40267ec6974b1c6d56b3.jpg" alt="high yield seeds"></div>
+          <div class="card-content">
+            <span class="card-badge"><i class="fas fa-seedling"></i> HYV Seeds</span>
+            <h3>Certified Seeds</h3>
+            <div class="price-tag">₹320 - ₹2,800/pack</div>
+            <p>Paddy, wheat, maize, veg — climate resilient</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Real value add: support & delivery -->
+  <div class="feature-banner">
+    <div class="container">
+      <div class="feature-flex">
+        <div class="feature-item"><i class="fas fa-truck-fast"></i><h4>Free Delivery</h4><p>On orders above ₹2500</p></div>
+        <div class="feature-item"><i class="fas fa-microscope"></i><h4>Soil Testing Kit</h4><p>Free with first order</p></div>
+        <div class="feature-item"><i class="fas fa-headset"></i><h4>Agri Expert Support</h4><p>24/7 crop advisory</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonial / Real farmer stories -->
+  <section class="testimonial">
+    <div class="container">
+      <h2 class="section-title">❤️ Farmer's Voice</h2>
+      <div class="section-sub">Real stories from the field</div>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p>"NexRoots growth promoter increased my wheat yield by 35%! Plus the delivery was super fast in my village."</p>
+          <div class="farmer-name"><i class="fas fa-user-check"></i> - Suresh Patil, Maharashtra</div>
+        </div>
+        <div class="testi-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+          <p>"Best quality seeds and herbicides, genuine prices. Their support team guided me on disease control."</p>
+          <div class="farmer-name"><i class="fas fa-tractor"></i> - Meena Devi, Uttar Pradesh</div>
+        </div>
+        <div class="testi-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p>"I ordered fungicides and got them within 2 days. Healthy crop, minimal loss. Highly recommended!"</p>
+          <div class="farmer-name"><i class="fas fa-leaf"></i> - Gurvinder Singh, Punjab</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA for latest offers -->
+  <div style="background: #eef0e2; padding: 60px 20px; text-align: center;">
+    <div class="container">
+      <h2 style="font-size: 2rem; color: #1f4f1a;">Get ₹500 off on first purchase</h2>
+      <p style="margin: 16px 0 28px; font-size: 1.1rem;">Subscribe to NexRoots Agro alerts & get seasonal crop advisory</p>
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <input type="email" placeholder="Enter your mobile / email" style="padding: 14px 24px; border-radius: 50px; border: 1px solid #b9cfaa; width: 280px; font-size: 1rem;">
+        <button class="btn-primary" style="background:#e8891f; color: #1f3b1a;">Subscribe Now</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4><i class="fas fa-seedling"></i> NexRoots Agro</h4>
+        <p>Empowering rural prosperity through sustainable agri-solutions and digital marketplace.</p>
+        <div class="social-icons" style="margin-top: 15px;">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <p><a href="#">About Us</a></p>
+        <p><a href="#">Farmers' Hub</a></p>
+        <p><a href="#">Become a Partner</a></p>
+        <p><a href="#">Crop Guide</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <p><a href="#">Contact Support</a></p>
+        <p><a href="#">Shipping Policy</a></p>
+        <p><a href="#">Return & Refund</a></p>
+        <p><a href="#">Farmer Helpline</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Download App</h4>
+        <p><i class="fab fa-android"></i> Android App (Coming Soon)</p>
+        <p><i class="fab fa-apple"></i> iOS App</p>
+        <p style="margin-top: 10px;">📞 Toll Free: 1800-203-4567</p>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2026 NexRoots Agro-Tech Pvt Ltd | Cultivating Tomorrow, Today 🌱 | All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
+
+<!-- tiny interactive alert for realism (just a demo touch) -->
+<script>
+  // make cards interactive: alert product category on click, realistic farm feel
+  const cards = document.querySelectorAll('.card');
+  cards.forEach((card, idx) => {
+    card.addEventListener('click', () => {
+      const title = card.querySelector('h3')?.innerText || 'Product';
+      alert(`🌾 ${title}: View complete details & bulk pricing available! Get best offers on NexRoots.`);
+    });
+  });
+  // login button simulation
+  const loginBtn = document.querySelector('.btn-login');
+  if(loginBtn) {
+    loginBtn.addEventListener('click', () => {
+      alert('🔐 Farmer Portal coming soon! Stay tuned for personalized dashboard.');
+    });
+  }
+  // explore now / marketplace
+  const exploreBtn = document.querySelector('.hero-content .btn-primary');
+  if(exploreBtn) {
+    exploreBtn.addEventListener('click', () => {
+      window.scrollTo({ top: document.querySelector('.products')?.offsetTop - 70, behavior: 'smooth' });
+    });
+  }
+  // subscribe simple alert
+  const subBtn = document.querySelector('div[style*="background: #eef0e2;"] .btn-primary');
+  if(subBtn) {
+    subBtn.addEventListener('click', () => {
+      const inputField = document.querySelector('div[style*="background: #eef0e2;"] input');
+      if(inputField && inputField.value.trim() !== '') {
+        alert(`📧 Thanks! We'll send ₹500 coupon & updates to ${inputField.value.trim()}`);
+        inputField.value = '';
+      } else {
+        alert('🌿 Please enter your email or mobile to grab the offer!');
+      }
+    });
+  }
+</script>
+</body>
+</html>
